@@ -63,6 +63,7 @@ table {
 }
 
 #canvas input{
+	width:50%;
    text-align:center;
    border: 0px solid;
    background: rgba(0, 0, 0, 0.5);
