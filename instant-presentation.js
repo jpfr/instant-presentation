@@ -19,7 +19,7 @@ function refreshPic(){
 	var input = $("#title").val();
 	var splitted = input.split(" ");
 	var lastWord = splitted[splitted.length-1];
-	if(lastWord.length > 4){
+	if(lastWord.length >= 4){
 		getImageUrl(lastWord,imagecallback);
 	}
 }
