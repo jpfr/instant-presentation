@@ -27,7 +27,7 @@ $( document ).ready(function() {
         });
 
     var recognition = new webkitSpeechRecognition();
-    recognition.lang = "de-DE";
+    recognition.lang = "fr-FR";
     recognition.continuous = true;
     recognition.interimResults = true;
     recognition.onresult = function(event) {
