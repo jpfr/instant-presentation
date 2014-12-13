@@ -59,9 +59,6 @@ table {
     background-size: cover;
 }
 
-.centered {
-}
-
 #title {
     width: 750px;
     text-align:center;
@@ -73,12 +70,5 @@ table {
     margin-top: 0.5em;
     border: 0px solid;
     display: block;
-}
-
-#hidden_input {
-    outline: none;
-    /* border: 0px solid; */
-    /* background: rgba(0, 0, 0, 0.0); */
-    /* color: rgba(0, 0, 0, 0.0); */
-    /* width: 0px; */
+    outline: 0;
 }
