@@ -19,29 +19,32 @@ function getImageUrl(keyword){
 
 function refreshPic(){
 	var input = $("#title").val();
-	getImageUrl(input);
-	return;
-	
 	var splitted = input.split(" ");
-	var lastWord = splitted[splitted.length-1];
 	var firstChar = "";
+	var counter = 0;
+	var wordCombination = "";
+	var lastWord = "";
 	for(var i = splitted.length-1; i>=0;i--){
 		lastWord = splitted[i];
 		firstChar = lastWord.charAt(0);
 		if(firstChar === firstChar.toUpperCase()){
-			console.debug(lastWord);
-			getImageUrl(lastWord);
-			break;
+			wordCombination = wordCombination + " " + lastWord;
+			counter++;
+			if(counter == 2){
+				break;	
+			}
 		}
+	}	
+	if(wordCombination !== ""){
+		getImageUrl(wordCombination);
 	}
+
 }
 $( document ).ready(function() {
     $('#canvas').css("background-image", "url(http://spinoff.comicbookresources.com/wp-content/uploads/2014/06/mr-t.jpeg)");  
-	var lastchangetime = 0;
 	var timer = null;
 	$('#title').on('input', function(){
 		clearTimeout(timer);
-	    console.debug("ready");
 		timer = setTimeout(refreshPic, 400);
 	});
 });
