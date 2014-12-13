@@ -59,16 +59,16 @@ table {
     background-size: cover;
 }
 
-#title {
-    width: 750px;
+#title{
+	width:750px;
     text-align:center;
+    border: 0px solid;
     background: rgba(0, 0, 0, 0.5);
     color: #EEE;
+    outline: none;
     padding: 0.5em 0.5em 0.5em 0.5em;
     font-size: 48pt;
+    display: block;
     margin : 0 auto;
     margin-top: 0.5em;
-    border: 0px solid;
-    display: block;
-    outline: 0;
 }
