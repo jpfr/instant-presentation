@@ -11,8 +11,15 @@ function refreshPic(){
 	var input = $("#title").val();
 	var splitted = input.split(" ");
 	var lastWord = splitted[splitted.length-1];
-	if(lastWord.length > 4){
-		getImageUrl(lastWord);
+	var firstChar = "";
+	for(var i = splitted.length-1; i>=0;i--){
+		lastWord = splitted[i];
+		firstChar = lastWord.charAt(0);
+		if(firstChar === firstChar.toUpperCase()){
+			console.debug(lastWord);
+			getImageUrl(lastWord);
+			break;
+		}
 	}
 }
 $( document ).ready(function() {
