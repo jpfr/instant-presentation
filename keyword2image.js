@@ -1,8 +1,8 @@
 
 function getImageUrl(keyword,callback){
 	var apiKey = "eb256520904bd8ee05b1116f2ed5da99";
-	var param  = "tags";
-	$.getJSON('https://api.flickr.com/services/rest/?method=flickr.photos.search&format=json&nojsoncallback=1&api_key=' + apiKey + '&'+param+'=' + keyword,
+	var param  = "text";
+	$.getJSON('https://api.flickr.com/services/rest/?method=flickr.photos.search&format=json&nojsoncallback=1&sort=relevance&api_key=' + apiKey + '&'+param+'=' + keyword,
     	callback);
 }
 function photoObject2ImageUrl(photo){
