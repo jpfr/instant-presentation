@@ -1,6 +1,7 @@
-function getImageUrl(keyword){
+function setImage(){
+        var input = $("#title").val();
         $.ajax({
-                url: 'https://ajax.googleapis.com/ajax/services/search/images?v=1.0&rsz=8&imgtype=photo&imgsz=xlarge|xxlarge&safe=active&q=' + keyword,
+                url: 'https://ajax.googleapis.com/ajax/services/search/images?v=1.0&rsz=8&imgtype=photo&imgsz=xlarge|xxlarge&safe=active&q=' + input,
                 dataType: 'jsonp',
                 success: function(data) { console.log(data.responseData);
                         // find 16:9 images
@@ -17,19 +18,12 @@ function getImageUrl(keyword){
                 }});
 }
 
-function refreshPic(){
-        var input = $("#title").val();
-        var splitted = input.split(" ");
-        console.log(splitted.splice(-5).join(" "));
-        getImageUrl(splitted.splice(-5).join(" "));
-}
-
 $( document ).ready(function() {
     $('#canvas').css("background-image", "url(http://spinoff.comicbookresources.com/wp-content/uploads/2014/06/mr-t.jpeg)");
         var timer = null;
         $('#title').on('input', function(){
                 clearTimeout(timer);
-                timer = setTimeout(refreshPic, 400);
+                timer = setTimeout(setImage, 400);
         });
 
     var recognition = new webkitSpeechRecognition();
@@ -37,11 +31,9 @@ $( document ).ready(function() {
     recognition.continuous = true;
     recognition.interimResults = true;
     recognition.onresult = function(event) {
-        console.log(event);
-        $('#title').val(event.results[event.resultIndex][0].transcript);
+        var res = event.results[event.resultIndex][0].transcript;
+        $('#title').val(res.split(" ").splice(-5).join(" "));
         $('#title').trigger('input');
     };
-
     recognition.start();
-
 });
