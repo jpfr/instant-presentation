@@ -1,14 +1,27 @@
 function getImageUrl(keyword){
-	                $.ajax({
-                    url: 'https://ajax.googleapis.com/ajax/services/search/images?v=1.0&imgsz=xlarge|xxlarge|huge&safe=active&q=' + keyword,
-                    dataType: 'jsonp',
-                    success: function(data) { console.log(data.responseData);
-						$('#canvas').css("background-image", "url("+data.responseData.results[0].url +")");
-                    }});
+	$.ajax({
+		url: 'https://ajax.googleapis.com/ajax/services/search/images?v=1.0&rsz=8&imgtype=photo&imgsz=xlarge|xxlarge&safe=active&q=' + keyword,
+		dataType: 'jsonp',
+		success: function(data) { console.log(data.responseData);
+			// find 16:9 images
+			var mini = 0;
+			var mindiff = 999999999.9;
+			for (var i = 0; i < data.responseData.results.length; i++) {
+				var diff = Math.pow(((16.0/9.0) - (data.responseData.results[i].width / data.responseData.results[i].height)),2);
+				if(diff < mindiff) {
+					mindiff = diff;
+					mini = i;
+				}
+			}
+			$('#canvas').css("background-image", "url("+data.responseData.results[mini].url +")");
+		}});
 }
 
 function refreshPic(){
 	var input = $("#title").val();
+	getImageUrl(input);
+	return;
+	
 	var splitted = input.split(" ");
 	var lastWord = splitted[splitted.length-1];
 	var firstChar = "";
@@ -31,5 +44,4 @@ $( document ).ready(function() {
 	    console.debug("ready");
 		timer = setTimeout(refreshPic, 400);
 	});
-
 });
