@@ -1,7 +1,7 @@
 function setImage(){
         var input = $("#title").val();
         $.ajax({
-                url: 'https://ajax.googleapis.com/ajax/services/search/images?v=1.0&rsz=8&imgtype=photo&imgsz=xlarge|xxlarge&safe=active&q=' + input,
+                url: 'https://ajax.googleapis.com/ajax/services/search/images?v=1.0&rsz=8&imgtype=photo&imgsz=xxlarge&safe=active&q=' + input,
                 dataType: 'jsonp',
                 success: function(data) { console.log(data.responseData);
                         // find 16:9 images
