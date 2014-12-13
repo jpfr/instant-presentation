@@ -62,15 +62,23 @@ table {
 .centered {
 }
 
-#canvas input{
-   text-align:center;
-   border: 0px solid;
-   background: rgba(0, 0, 0, 0.5);
-   color: #EEE;
-   outline: none;
-   padding: 0.5em 0.5em 0.5em 0.5em;
-   font-size: 48pt;
-   display: block;
-   margin : 0 auto;
-   margin-top: 0.5em;
+#title {
+    width: 750px;
+    text-align:center;
+    background: rgba(0, 0, 0, 0.5);
+    color: #EEE;
+    padding: 0.5em 0.5em 0.5em 0.5em;
+    font-size: 48pt;
+    margin : 0 auto;
+    margin-top: 0.5em;
+    border: 0px solid;
+    display: block;
+}
+
+#hidden_input {
+    outline: none;
+    /* border: 0px solid; */
+    /* background: rgba(0, 0, 0, 0.0); */
+    /* color: rgba(0, 0, 0, 0.0); */
+    /* width: 0px; */
 }
