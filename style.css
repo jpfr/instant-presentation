@@ -53,3 +53,23 @@ table {
     top:0; right:0;
     bottom:0; left:0;
 }
+
+.centered {
+}
+
+#canvas input{
+   text-align:center;
+    border: 0px solid;
+    background: #000;
+    color: #EEE;
+    outline: none;
+    padding: 1em 1em 1em 1em;
+    font-size: 48pt;
+    /* display: inline-block; */
+  /* margin-left: auto ; */
+  /* margin-right: auto ; */
+    /* -moz-box-sizing: border-box; */
+    /* box-sizing: border-box; */
+    display: block;
+    margin : 0 auto;
+}
