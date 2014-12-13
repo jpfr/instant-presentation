@@ -1,18 +1,10 @@
-function getImageUrl(keyword,callback){
-	var apiKey = "eb256520904bd8ee05b1116f2ed5da99";
-	$.getJSON('https://api.flickr.com/services/rest/?method=flickr.photos.search&format=json&nojsoncallback=1&content_type=1&sort=relevance&api_key=' + apiKey + '&text=' + keyword,
-    	callback);
-}
-function photoObject2ImageUrl(photo){
-	return "https://farm"+photo.farm+".staticflickr.com/"+photo.server+"/"+photo.id+"_"+photo.secret+"_b.jpg";
-}
-
-function imagecallback(data){
-	if(data.photos && data.photos.photo && data.photos.photo.length>0){
-		console.debug(data.photos.photo[0]);
-		console.debug(photoObject2ImageUrl(data.photos.photo[0]));
-		$('#canvas').css("background-image", "url("+photoObject2ImageUrl(data.photos.photo[0])+")");
-	}
+function getImageUrl(keyword){
+	                $.ajax({
+                    url: 'https://ajax.googleapis.com/ajax/services/search/images?v=1.0&imgsz=xlarge|xxlarge|huge&safe=active&q=' + keyword,
+                    dataType: 'jsonp',
+                    success: function(data) { console.log(data.responseData);
+						$('#canvas').css("background-image", "url("+data.responseData.results[0].url +")");
+                    }});
 }
 
 function refreshPic(){
@@ -20,7 +12,7 @@ function refreshPic(){
 	var splitted = input.split(" ");
 	var lastWord = splitted[splitted.length-1];
 	if(lastWord.length > 4){
-		getImageUrl(lastWord,imagecallback);
+		getImageUrl(lastWord);
 	}
 }
 $( document ).ready(function() {
