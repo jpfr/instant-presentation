@@ -52,15 +52,13 @@ table {
     position:absolute;
     top:0; right:0;
     bottom:0; left:0;
-
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
-    background-size: cover;
+	background-position:center;
+	background-size: contain;
+	background-repeat:no-repeat
 }
 
 #title{
-	width:750px;
+	width:50%;
     text-align:center;
     border: 0px solid;
     background: rgba(0, 0, 0, 0.5);
