@@ -9,7 +9,7 @@ function photoObject2ImageUrl(photo){
 }
 function imagecallback(data){
 	console.debug(data.photos);
-	if(data.photos && data.photos.photo){
+	if(data.photos && data.photos.photo && data.photos.photo.length>0){
 		console.debug(data.photos.photo[0]);
 		console.debug(photoObject2ImageUrl(data.photos.photo[0]));
 		$('#canvas').css("background-image", "url("+photoObject2ImageUrl(data.photos.photo[0])+")");
@@ -20,13 +20,12 @@ $( document ).ready(function() {
 	$('#text_input').on('input', function(){
 		var current = new Date();
 		var diff = (current - lasttime)/ 1000; // in second
-		console.debug(diff);
-		if(diff > 5){
+		if(diff > 1){
 			lasttime = new Date();
 			var input = $("#text_input").val();
 			var splitted = input.split(" ");
 			var lastWord = splitted[splitted.length-1];
-			getImageUrl(lastWord,imagecallback);
+			getImageUrl(input,imagecallback);
 		}
 	});
 });
