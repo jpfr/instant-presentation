@@ -66,6 +66,9 @@ $( document ).ready(function() {
     if(lang !== "") {
         recognition.lang = lang;
     }
+    if(lang === ""){
+    	recognition.lang = "de";
+    }
     recognition.continuous = true;
     recognition.interimResults = true;
     recognition.onresult = function(event) {
