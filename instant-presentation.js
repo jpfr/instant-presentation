@@ -1,7 +1,7 @@
 function setImage(){
         var input = $("#title").val();
         $.ajax({
-                url: 'https://ajax.googleapis.com/ajax/services/search/images?v=1.0&rsz=8&imgtype=photo&imgsz=xlarge|xxlarge|huge&safe=active&q=' + input,
+                url: 'https://ajax.googleapis.com/ajax/services/search/images?v=1.0&rsz=8&imgtype=photo&imgsz=xlarge|xxlarge&safe=active&q=' + input,
                 dataType: 'jsonp',
                 success: function(data) { console.log(data.responseData);
                         // find 16:9 images
@@ -18,6 +18,17 @@ function setImage(){
                 }});
 }
 
+function getUrlParameter(sParam) {
+    var sPageURL = window.location.search.substring(1);
+    var sURLVariables = sPageURL.split('&');
+    for (var i = 0; i < sURLVariables.length; i++) {
+        var sParameterName = sURLVariables[i].split('=');
+        if (sParameterName[0] == sParam) {
+            return sParameterName[1];
+        }
+    }
+}   
+
 $( document ).ready(function() {
     $('#canvas').css("background-image", "url(http://spinoff.comicbookresources.com/wp-content/uploads/2014/06/mr-t.jpeg)");
         var timer = null;
@@ -27,7 +38,10 @@ $( document ).ready(function() {
         });
 
     var recognition = new webkitSpeechRecognition();
-    recognition.lang = "fr-FR";
+    var lang = getUrlParamter("lang");
+    if(lang !== "") {
+        recognition.lang = lang;
+    }
     recognition.continuous = true;
     recognition.interimResults = true;
     recognition.onresult = function(event) {
