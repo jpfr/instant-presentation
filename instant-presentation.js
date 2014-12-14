@@ -38,7 +38,7 @@ $( document ).ready(function() {
         });
 
     var recognition = new webkitSpeechRecognition();
-    var lang = getUrlParamter("lang");
+    var lang = getUrlParameter("lang");
     if(lang !== "") {
         recognition.lang = lang;
     }
