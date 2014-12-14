@@ -14,7 +14,8 @@ function setImage(){
                                         mini = i;
                                 }
                         }
-                        $('#canvas').css("background-image", "url("+data.responseData.results[mini].url +")");
+                        if(data.responseData.results.length>0)
+                        	$('#canvas').css("background-image", "url("+data.responseData.results[mini].url +")");
                 }});
 }
 
