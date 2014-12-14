@@ -29,6 +29,30 @@ function getUrlParameter(sParam) {
     }
 }   
 
+function extractSearchString(text){
+
+	var splitted = text.split(" ");
+	var firstChar = "";
+	var counter = 0;
+	var wordCombination = "";
+	var lastWord = "";
+	for(var i = splitted.length-1; i>=0;i--){
+		lastWord = splitted[i];
+		firstChar = lastWord.charAt(0);
+		if(firstChar === firstChar.toUpperCase()){
+			wordCombination = wordCombination + " " + lastWord;
+			counter++;
+			if(counter == 2){
+				break;	
+			}
+		}
+	}
+	if(wordCombination === ""){
+		return text;
+	}
+	return wordCombination;
+}
+
 $( document ).ready(function() {
     $('#canvas').css("background-image", "url(http://spinoff.comicbookresources.com/wp-content/uploads/2014/06/mr-t.jpeg)");
         var timer = null;
@@ -46,7 +70,8 @@ $( document ).ready(function() {
     recognition.interimResults = true;
     recognition.onresult = function(event) {
         var res = event.results[event.resultIndex][0].transcript;
-        $('#title').val(res.split(" ").splice(-5).join(" "));
+
+        $('#title').val(extractSearchString(res));
         $('#title').trigger('input');
     };
     recognition.start();
