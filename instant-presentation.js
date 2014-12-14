@@ -63,10 +63,10 @@ $( document ).ready(function() {
 
     var recognition = new webkitSpeechRecognition();
     var lang = getUrlParameter("lang");
-    if(lang !== "") {
+    if(lang !== undefined) {
         recognition.lang = lang;
     }
-    if(lang === ""){
+    else{
     	recognition.lang = "de";
     }
     recognition.continuous = true;
